@@ -1,0 +1,6 @@
+.footer {position: fixed;;bottom:0px;left: 0;height:20px;width: 100%;display: flex;
+background: #fff;padding-bottom: 40px;
+    z-index: 2;}
+.footer .anticon {
+    flex: 1;
+    }

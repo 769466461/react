@@ -1,0 +1,18 @@
+.header{
+    width: 100%;
+    position: fixed;
+    z-index: 2 ;
+    top: 0;
+    left: 0;
+
+}
+.header .flex{
+    background: #99f;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    /*flex-direction: row;*/
+}
+.header button{
+    flex: 1;
+}
