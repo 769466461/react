@@ -9,25 +9,25 @@ class Cell extends Component {
         let {cells,dataName} = this.props
         return (
 
-            <div className="cell">
+          <div className="cell">
 
-                {
-                cells.map((item,index)=>(
+              {
+                  cells.map((item,index)=>(
                     <Link
-                        key={item.id}
-                        to={{
-                            pathname:"/detail/" + item.id,
-                            search:"?dataName=" + dataName
-                        }}
-                        className="aa"
+                      key={item.id}
+                      to={{
+                          pathname:"/detail/" + item.id,
+                          search:"?dataName=" + dataName
+                      }}
+                      className="aa"
                     >
                         <h3 >{item.id}{item.title}</h3>
                         <span>{item.des}</span>
                     </Link>
-                ))
-            }
+                  ))
+              }
 
-            </div>
+          </div>
         );
     }
 }

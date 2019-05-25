@@ -55,7 +55,9 @@ export default class Reg extends React.Component{
       <div className="Reg">
           <div className="title">
 
-                  <span style={{color:"#99f"}}>首页</span>
+            <NavLink to="/home">
+              <span style={{color:"#99f"}}>首页</span>
+            </NavLink>
               <span style={{marginLeft:"5rem"}}>注册新用户</span>
           </div>
           <form className="login-form" method="post" noValidate>

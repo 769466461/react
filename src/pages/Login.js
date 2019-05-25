@@ -2,11 +2,15 @@ import React from 'react';
 import "../assets/css/Login.css"
 import {NavLink} from "react-router-dom";
 import { Button } from 'antd';
-import axios from "axios"
-export default class Login extends React.Component{
+import axios from "axios";
+import connect from "react-redux/es/connect/connect";
+import {action1,action2} from "../store/actions";
+
+class Login extends React.Component{
   state={
     username:"",
-    password:""
+    password:"",
+    bl:false
 
   }
   changeIpt = (ev)=>{
@@ -16,7 +20,7 @@ export default class Login extends React.Component{
   }
 
   submit = async ()=>{
-    let res = await axios({
+   /* let res = await axios({
     url:"/api/login",
     params:{
       username:this.state.username,
@@ -24,7 +28,6 @@ export default class Login extends React.Component{
       bl:false
     }
   });
-    console.log(res)
     if(res.data.error===0){
       localStorage.setItem('_user',this.state.username);
       this.props.history.push("/user")
@@ -32,7 +35,26 @@ export default class Login extends React.Component{
       this.setState({
         bl:true
       })
-    }
+    }*/
+   this.props.get({
+     url:"/api/login",
+     params:{
+       username:this.state.username,
+       password:this.state.password,
+     },
+     typename:"UPDATE_USER"
+   }).then(
+     error=>{
+       if(error===0){
+         localStorage.setItem('_user',this.state.username);
+         this.props.history.push("/user")
+       }else{
+         this.setState({
+           bl:true
+         })
+       }
+     }
+   )
 }
   render(){
 
@@ -88,3 +110,18 @@ export default class Login extends React.Component{
     )
   }
 }
+
+const initMapStateToProps=state=>({
+  user: state.user
+});
+
+const initMapDispatchToProps=dispatch=>({
+  get:({url,params,typename})=>dispatch(action2({
+    url,params,typename
+  }))
+});
+
+export default connect(
+  initMapStateToProps,
+  initMapDispatchToProps
+)(Login)

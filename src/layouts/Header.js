@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink,withRouter} from "react-router-dom";
 import { Tabs } from 'antd';
 import { Button } from 'antd';
 import  '../assets/css/Header.css'
@@ -25,4 +25,4 @@ class Header extends React.Component{
     }
   }
 
-  export default Header;
+  export default withRouter(Header);

@@ -1,20 +1,22 @@
 import React from 'react';
 import "../assets/css/User.css"
 import {NavLink, Prompt} from "react-router-dom"
+import propTypes from "prop-types";
+import { PageHeader } from 'antd';
+import connect from "react-redux/es/connect/connect";
 
-export default class User extends React.Component{
+class User extends React.Component{
 
+  static contextTypes={
+    setLoadingBl:propTypes.func
+  }
 
   render(){
     let username = this.props.data
-    console.log(this.props.data)
+
     return(
       <div className="User">
-        <h3>User</h3>
-          <h3>User</h3>
-          <h3>User</h3>
-          <h3>User</h3>
-        <div>用户{username}</div>
+        <PageHeader onBack={() => this.props.history.go(-1)} title={username}subTitle="个人中心" />
 
         <header>
           <p>个人中心</p>
@@ -59,4 +61,20 @@ export default class User extends React.Component{
 
     )
   }
+
+  async componentDidMount(){
+    this.context.setLoadingBl(false);
+
+  }
 }
+const initMapStateToProps=state=>({
+  user:state.user,
+});
+
+const initMapDispatchToProps=dispatch=>({
+
+});
+
+export default connect(
+  initMapStateToProps,initMapDispatchToProps
+)(User)

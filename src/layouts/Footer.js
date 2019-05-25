@@ -8,12 +8,15 @@ class Footer extends React.Component{
     return <div className="footer">
       {/*<NavLink to="/home">*/}
         <Icon type="home" style={{ fontSize: '32px', color: '#08c' }} onClick={()=>{
-          window.location.replace("/home")
+          // window.location.replace("/home")
+          this.props.history.push("/home")
         }}/>
       {/*</NavLink>*/}
       <Icon type="camera" style={{ fontSize: '32px', color: '#08c' }}/>
       <Icon type="user" style={{fontSize: '32px'}} onClick={()=>{
-        window.location.replace("/user  ")}}
+        // window.location.replace("/user")
+        this.props.history.push("/user")
+      }}
       />
     </div>;
   }
